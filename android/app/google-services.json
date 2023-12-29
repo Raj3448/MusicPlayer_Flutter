@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "842683482565",
+    "project_id": "beatbox-music-app",
+    "storage_bucket": "beatbox-music-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:842683482565:android:efec96a8ec83591b878bac",
+        "android_client_info": {
+          "package_name": "com.example.beat_box"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwzbHcj0MMX_8nosYENIIN916pgqw44H4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
