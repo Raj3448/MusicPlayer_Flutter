@@ -48,7 +48,7 @@ android {
         applicationId "com.example.beat_box"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion flutter.minSdkVersion
+        minSdkVersion 21
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
@@ -74,5 +74,4 @@ dependencies {
     implementation 'com.google.firebase:firebase-appcheck-debug:16.0.0-beta01'
     implementation 'com.google.firebase:firebase-auth'
     implementation platform('com.google.firebase:firebase-bom:32.6.0')
-    
 }

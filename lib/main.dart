@@ -3,6 +3,7 @@ import 'package:beat_box/Blocs/Auth/AuthBloc/autth_bloc.dart';
 import 'package:beat_box/AuthScreen/authscreen.dart';
 
 import 'package:beat_box/Splash/splashScreen.dart';
+import 'package:beat_box/cubit/song_play_cubit.dart';
 import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +28,10 @@ class MyApp extends StatelessWidget {
           create: (context) => AuthBloc(),
           
         ),
-        
+        BlocProvider(
+          create: (context) => SongPlayCubit(),
+          
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
