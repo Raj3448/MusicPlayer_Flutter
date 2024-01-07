@@ -26,7 +26,7 @@ class MyCustomAudioPlayer extends ChangeNotifier {
       audioPlayer.pause();
       isPlaying = false;
       notifyListeners();
-      await audioPlayer.play(UrlSource(songUrl!), mode: PlayerMode.mediaPlayer);
+      await audioPlayer.play(UrlSource(songUrl), mode: PlayerMode.mediaPlayer);
       songDuration = await audioPlayer.getDuration();
       previousUrl = songUrl;
       id = songId;

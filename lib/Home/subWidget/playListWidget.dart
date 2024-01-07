@@ -1,4 +1,5 @@
 import 'package:beat_box/Home/subWidget/songPlayerWidget.dart';
+import 'package:beat_box/Provider/SongInfo.dart';
 import 'package:beat_box/provider/audioPlayer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -29,17 +30,30 @@ class PlayListWidget extends StatelessWidget {
         );
       }
       return Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10),
         height: MediaQuery.of(context).size.height * 0.1,
         decoration: id == value.getSongId
-            ? BoxDecoration(border: Border.all(width: 1, color: Colors.white))
+            ? BoxDecoration(
+                border: Border.all(width: 1, color: Colors.white),
+                borderRadius: const BorderRadius.all(Radius.circular(20)))
             : null,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             InkWell(
               onTap: () {
+                //value.playSongByUrl(songUrl: songUrl!, songId: id!);
+                //songPlayerWidget(id!, name, imageUrl, songUrl, singer, context);
+
+                SongInfo songInfo = Provider.of<SongInfo>(context,
+                                        listen: false)
+                                    .getSongInfoInstance!;
+                songInfo.imageUrl = imageUrl!;
+                                songInfo.songUrl = songUrl!;
+                                songInfo.name = name!;
+                                songInfo.singer = singer!;
+                                songInfo.id = id!;
                 value.playSongByUrl(songUrl: songUrl!, songId: id!);
-                songPlayerWidget(name, imageUrl, songUrl, singer, context);
               },
               child: ListTile(
                 leading: Container(

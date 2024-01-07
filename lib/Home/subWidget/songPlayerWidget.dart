@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
-Widget? songPlayerWidget(String? name, String? imageUrl, String? songUrl,
-    String? singer, BuildContext context) {
+Widget? songPlayerWidget(String id, String? name, String? imageUrl,
+    String? songUrl, String? singer, BuildContext context) {
   return Column(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
@@ -39,6 +39,9 @@ Widget? songPlayerWidget(String? name, String? imageUrl, String? songUrl,
         trailing: Consumer<MyCustomAudioPlayer>(
           builder: (context, value, child) => InkWell(
             onTap: () {
+              if (!(value.isPlaying)) {
+                value.playSongByUrl(songUrl: songUrl!, songId: id);
+              }
               value.pauseAndResumeSong();
             },
             child: SizedBox(

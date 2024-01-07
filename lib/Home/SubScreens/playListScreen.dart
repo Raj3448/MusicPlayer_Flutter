@@ -1,7 +1,9 @@
 import 'package:beat_box/Home/subWidget/playListWidget.dart';
 import 'package:beat_box/provider/SongInfo.dart';
+import 'package:beat_box/provider/audioPlayer.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class PlayListScreen extends StatelessWidget {
   final dynamic playListInfo;
@@ -130,35 +132,40 @@ class PlayListScreen extends StatelessWidget {
                       return ListView.builder(
                           itemCount: songContent.length,
                           itemBuilder: (context, index) {
-                            // songInfo = Provider.of<SongInfo>(
-                            //                         context,
-                            //                         listen: false)
-                            //                     .getSongInfoInstance!;
-                            //                 songInfo.imageUrl =
-                            //                     songContent[index].data()['imageUrl'];
-                            //                 songInfo.songUrl =
-                            //                     songContent[index].data()['songUrl'];
-                            //                 songInfo.name = songContent[index].data()['name'];
-                            //                 songInfo.singer =
-                            //                     songContent[index].data()['singer'];
-                            //                 songInfo.id = songContent[index].data()['id'];
-                            //                 print(songInfo);
-                            songInfo.id = songContent[index].data()['id'];
-                            songInfo.imageUrl =
-                                songContent[index].data()['imageUrl'];
-                            songInfo.songUrl =
-                                songContent[index].data()['songUrl'];
-                            songInfo.name = songContent[index].data()['name'];
-                            songInfo.singer =
-                                songContent[index].data()['singer'];
-                            return Center(
-                                child: PlayListWidget(
-                              name: songContent[index].data()['name'],
-                              imageUrl: songContent[index].data()['imageUrl'],
-                              songUrl: songContent[index].data()['songUrl'],
-                              singer: songContent[index].data()['singer'],
-                              id: songContent[index].data()['id'],
-                            ));
+                            // songInfo.id = songContent[index].data()['id'];
+                            // songInfo.imageUrl =
+                            //     songContent[index].data()['imageUrl'];
+                            // songInfo.songUrl =
+                            //     songContent[index].data()['songUrl'];
+                            // songInfo.name = songContent[index].data()['name'];
+                            // songInfo.singer =
+                            //     songContent[index].data()['singer'];
+                            return GestureDetector(
+                              onTap: () {
+                                // final singleSong = songContent[index].data();
+                                // songInfo = Provider.of<SongInfo>(context,
+                                //         listen: false)
+                                //     .getSongInfoInstance!;
+                                // songInfo.imageUrl = singleSong['imageUrl'];
+                                // songInfo.songUrl = singleSong['songUrl'];
+                                // songInfo.name = singleSong['name'];
+                                // songInfo.singer = singleSong['singer'];
+                                // songInfo.id = singleSong['id'];
+                                // Provider.of<MyCustomAudioPlayer>(context,
+                                //         listen: false)
+                                //     .playSongByUrl(
+                                //         songUrl: singleSong['songUrl'],
+                                //         songId: singleSong['id']);
+                              },
+                              child: Center(
+                                  child: PlayListWidget(
+                                name: songContent[index].data()['name'],
+                                imageUrl: songContent[index].data()['imageUrl'],
+                                songUrl: songContent[index].data()['songUrl'],
+                                singer: songContent[index].data()['singer'],
+                                id: songContent[index].data()['id'],
+                              )),
+                            );
                           });
                     }),
               ),

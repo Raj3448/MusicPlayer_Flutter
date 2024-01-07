@@ -315,7 +315,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                             end: Alignment.centerRight),
                         borderRadius: BorderRadius.all(Radius.circular(20)),
                         color: Colors.black),
-                    child: songPlayerWidget(value.name, value.imageUrl,
+                    child: songPlayerWidget(value.id!,value.name, value.imageUrl,
                         value.songUrl, value.singer, context),
                   ),
                 ),
