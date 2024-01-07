@@ -26,11 +26,8 @@ class PlayListScreen extends StatelessWidget {
       body: Container(
         height: MediaQuery.of(context).size.height,
         decoration: const BoxDecoration(
-            gradient: LinearGradient(colors: [
-          Colors.cyan,
-          Colors.blue,
-          Color.fromARGB(255, 45, 1, 121)
-        ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
+          color: Color.fromARGB(255, 2, 6, 36),
+            ),
         child: SingleChildScrollView(
           physics: const NeverScrollableScrollPhysics(),
           child: Column(

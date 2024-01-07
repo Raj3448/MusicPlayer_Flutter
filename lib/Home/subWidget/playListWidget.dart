@@ -1,4 +1,3 @@
-import 'package:beat_box/Home/subWidget/songPlayerWidget.dart';
 import 'package:beat_box/Provider/SongInfo.dart';
 import 'package:beat_box/provider/audioPlayer.dart';
 import 'package:flutter/material.dart';
@@ -34,6 +33,12 @@ class PlayListWidget extends StatelessWidget {
         height: MediaQuery.of(context).size.height * 0.1,
         decoration: id == value.getSongId
             ? BoxDecoration(
+                gradient: LinearGradient(colors: [
+                  Colors.cyan,
+                  Colors.blue,
+                  Color.fromARGB(255, 45, 1, 121)
+                ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
+                //color: Color.fromARGB(255, 2, 6, 36),
                 border: Border.all(width: 1, color: Colors.white),
                 borderRadius: const BorderRadius.all(Radius.circular(20)))
             : null,
@@ -45,14 +50,14 @@ class PlayListWidget extends StatelessWidget {
                 //value.playSongByUrl(songUrl: songUrl!, songId: id!);
                 //songPlayerWidget(id!, name, imageUrl, songUrl, singer, context);
 
-                SongInfo songInfo = Provider.of<SongInfo>(context,
-                                        listen: false)
-                                    .getSongInfoInstance!;
+                SongInfo songInfo =
+                    Provider.of<SongInfo>(context, listen: false)
+                        .getSongInfoInstance!;
                 songInfo.imageUrl = imageUrl!;
-                                songInfo.songUrl = songUrl!;
-                                songInfo.name = name!;
-                                songInfo.singer = singer!;
-                                songInfo.id = id!;
+                songInfo.songUrl = songUrl!;
+                songInfo.name = name!;
+                songInfo.singer = singer!;
+                songInfo.id = id!;
                 value.playSongByUrl(songUrl: songUrl!, songId: id!);
               },
               child: ListTile(
@@ -84,12 +89,14 @@ class PlayListWidget extends StatelessWidget {
                   ],
                 ),
                 trailing: InkWell(
-                  onTap: () {
-                    value.pauseAndResumeSong();
-                  },
+                  onTap: value.getSongId == id
+                      ? () {
+                          value.pauseAndResumeSong();
+                        }
+                      : null,
                   child: SizedBox(
-                      height: 40,
-                      width: 40,
+                      height: 30,
+                      width: 30,
                       child: value.getIsPlayingOrNot && value.getSongId == id
                           ? Image.asset(
                               'assets/Images/icons8-audio-wave.gif',
@@ -98,6 +105,7 @@ class PlayListWidget extends StatelessWidget {
                           : Image.asset(
                               'assets/Images/play.png',
                               fit: BoxFit.contain,
+                              color: Colors.white,
                             )),
                 ),
               ),
