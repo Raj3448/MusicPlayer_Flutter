@@ -48,13 +48,13 @@ dependencies:
   molten_navigationbar_flutter: ^1.0.1
   carousel_slider: ^4.2.1
   flutter_carousel_slider: ^1.1.0
-  just_audio: ^0.9.36
   on_audio_query: ^2.9.0
   permission_handler: ^11.1.0
   audio_video_progress_bar: ^2.0.1
   cached_network_image: ^3.3.0
-  just_audio_background: ^0.0.1-beta.11
-  rxdart: ^0.27.7
+  provider: ^6.1.1
+  audioplayers: ^5.2.1
+  shared_preferences: ^2.2.2
 
 dev_dependencies:
   flutter_test:

@@ -18,9 +18,9 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     screenList = [
-      HomeWidget(),
+      const HomeWidget(),
       const SearchScreen(),
-      const MusicScreen(),
+      MusicScreen(),
       MusicLibraryWidget(),
       const ProfileWidget()
     ];

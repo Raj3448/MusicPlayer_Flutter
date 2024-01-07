@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'autth_event.dart';
 part 'autth_state.dart';
@@ -12,6 +13,7 @@ part 'autth_state.dart';
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   String? _receivedUID = null;
   late final _imageUrl;
+  int sessionTimeoutMinutes = 30;
 
   String? get getUid {
     return _receivedUID;
@@ -65,6 +67,33 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     emit(AuthInitial());
   }
 
+  Future<void> saveLoginTime() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  prefs.setInt('loginTime', DateTime.now().millisecondsSinceEpoch);
+  }
+
+Future<int?> getLoginTime() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  return prefs.getInt('loginTime');
+}
+
+Future<void> clearLoginDetails() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  prefs.remove('userToken');
+  prefs.remove('userId');
+  prefs.remove('loginTime');
+}
+
+Future<bool> isSessionValid() async {
+  int? loginTime = await getLoginTime();
+  if (loginTime != null) {
+    DateTime currentTime = DateTime.now();
+    DateTime loginTimestamp = DateTime.fromMillisecondsSinceEpoch(loginTime);
+    return currentTime.difference(loginTimestamp).inMinutes <= sessionTimeoutMinutes;
+  }
+  return false;
+}
+
   Future<void> signInWithEmailAndPassword(
       String email, String password, BuildContext context) async {
     debugPrint("In SignIn");
@@ -76,6 +105,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         debugPrint('User has been successfully signed in');
         debugPrint('User Credentials: ${userCredential.user}');
         _receivedUID = userCredential.user!.uid;
+        await saveLoginTime(); // Save login time to shared preferences
         emit(AuthSuccess(UID: _receivedUID!));
       } else {
         debugPrint('User is null after sign-in.');
@@ -115,6 +145,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         debugPrint('New User has been created successfully');
         debugPrint('New User Credentials: ${userCredential.user}');
         _receivedUID = userCredential.user!.uid;
+        await saveLoginTime(); // Save login time to shared preferences
         
         final imageRef =
             FirebaseStorage.instance.ref().child('userImage').child('$getUid.jpg');
