@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     screenList = [
       const HomeWidget(),
-      const SearchScreen(),
+      SearchScreen(),
       MusicScreen(),
       MusicLibraryWidget(),
       const ProfileWidget()

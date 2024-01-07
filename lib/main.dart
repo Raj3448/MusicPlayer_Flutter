@@ -4,6 +4,7 @@ import 'package:beat_box/Blocs/Auth/AuthBloc/autth_bloc.dart';
 import 'package:beat_box/Provider/SongInfo.dart';
 import 'package:beat_box/Splash/splashScreen.dart';
 import 'package:beat_box/provider/audioPlayer.dart';
+import 'package:beat_box/provider/searchSong.dart';
 import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         BlocProvider<AuthBloc>(
           create: (context) => AuthBloc(),
         ),
+        ChangeNotifierProvider<SearchSong>(create: (context)=> SearchSong()),
         ChangeNotifierProvider<SongInfo>(create: (context) => SongInfo()),
         ChangeNotifierProvider<MyCustomAudioPlayer>(
             create: (context) => MyCustomAudioPlayer.private())
