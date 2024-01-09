@@ -4,6 +4,7 @@ import 'package:beat_box/Blocs/Auth/AuthBloc/autth_bloc.dart';
 import 'package:beat_box/Provider/SongInfo.dart';
 import 'package:beat_box/Splash/splashScreen.dart';
 import 'package:beat_box/provider/audioPlayer.dart';
+import 'package:beat_box/provider/recentlyPlayed.dart';
 import 'package:beat_box/provider/searchSong.dart';
 import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -34,7 +35,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<SearchSong>(create: (context)=> SearchSong()),
         ChangeNotifierProvider<SongInfo>(create: (context) => SongInfo()),
         ChangeNotifierProvider<MyCustomAudioPlayer>(
-            create: (context) => MyCustomAudioPlayer.private())
+            create: (context) => MyCustomAudioPlayer.private()),
+        ChangeNotifierProvider<RecentlyPlayedSongAdd>(
+            create: (context) => RecentlyPlayedSongAdd())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

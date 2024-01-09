@@ -4,7 +4,9 @@ import 'package:beat_box/Home/subWidget/HorizontalCardView.dart';
 import 'package:beat_box/Home/subWidget/HorizontalMadeForU.dart';
 import 'package:beat_box/Home/subWidget/songPlayerWidget.dart';
 import 'package:beat_box/Provider/SongInfo.dart';
+import 'package:beat_box/models/songDetailsTemplate.dart';
 import 'package:beat_box/provider/audioPlayer.dart';
+import 'package:beat_box/provider/recentlyPlayed.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -217,28 +219,29 @@ class _HomeWidgetState extends State<HomeWidget> {
                                       itemBuilder: (context, index) {
                                         return GestureDetector(
                                           onTap: () {
-                                            final singleSong =
-                                                songsList[index].data();
-                                            songInfo = Provider.of<SongInfo>(
-                                                    context,
-                                                    listen: false)
-                                                .getSongInfoInstance;
-                                            songInfo!.imageUrl =
-                                                singleSong['imageUrl'];
-                                            songInfo!.songUrl =
-                                                singleSong['songUrl'];
-                                            songInfo!.name = singleSong['name'];
-                                            songInfo!.singer =
-                                                singleSong['singer'];
-                                            songInfo!.id = singleSong['id'];
-                                            print(songInfo);
-                                            Provider.of<MyCustomAudioPlayer>(
-                                                    context,
-                                                    listen: false)
-                                                .playSongByUrl(
-                                                    songUrl:
-                                                        singleSong['songUrl'],
-                                                    songId: singleSong['id']);
+                                            // final singleSong =
+                                            //     songsList[index].data();
+                                            // songInfo = Provider.of<SongInfo>(
+                                            //         context,
+                                            //         listen: false)
+                                            //     .getSongInfoInstance;
+                                            // songInfo!.imageUrl =
+                                            //     singleSong['imageUrl'];
+                                            // songInfo!.songUrl =
+                                            //     singleSong['songUrl'];
+                                            // songInfo!.name = singleSong['name'];
+                                            // songInfo!.singer =
+                                            //     singleSong['singer'];
+                                            // songInfo!.id = singleSong['id'];
+                                            // print(songInfo);
+                                            // Provider.of<MyCustomAudioPlayer>(
+                                            //         context,
+                                            //         listen: false)
+                                            //     .playSongByUrl(
+                                            //         songUrl:
+                                            //             singleSong['songUrl'],
+                                            //         songId: singleSong['id']);
+                                            
                                           },
                                           child: HorizontalCardView(
                                               singleSongInfo:
@@ -315,8 +318,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                             end: Alignment.centerRight),
                         borderRadius: BorderRadius.all(Radius.circular(20)),
                         color: Colors.black),
-                    child: songPlayerWidget(value.id!,value.name, value.imageUrl,
-                        value.songUrl, value.singer, context),
+                    child: songPlayerWidget(value.id!, value.name,
+                        value.imageUrl, value.songUrl, value.singer, context),
                   ),
                 ),
               ],
