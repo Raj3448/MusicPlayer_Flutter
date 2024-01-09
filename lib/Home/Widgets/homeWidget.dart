@@ -4,9 +4,6 @@ import 'package:beat_box/Home/subWidget/HorizontalCardView.dart';
 import 'package:beat_box/Home/subWidget/HorizontalMadeForU.dart';
 import 'package:beat_box/Home/subWidget/songPlayerWidget.dart';
 import 'package:beat_box/Provider/SongInfo.dart';
-import 'package:beat_box/models/songDetailsTemplate.dart';
-import 'package:beat_box/provider/audioPlayer.dart';
-import 'package:beat_box/provider/recentlyPlayed.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -241,7 +238,6 @@ class _HomeWidgetState extends State<HomeWidget> {
                                             //         songUrl:
                                             //             singleSong['songUrl'],
                                             //         songId: singleSong['id']);
-                                            
                                           },
                                           child: HorizontalCardView(
                                               singleSongInfo:
@@ -275,7 +271,6 @@ class _HomeWidgetState extends State<HomeWidget> {
                                     return Image.asset(
                                         'assets/Images/madeForU.png');
                                   }
-
                                   final List songContent = snapshot.data!.docs;
                                   return ListView.builder(
                                       physics: const BouncingScrollPhysics(),

@@ -54,7 +54,7 @@ class MusicScreen extends StatelessWidget {
                         progress: !snapshot.hasData && snapshot.data == null
                             ? data
                             : snapshot.data!,
-                        total: maxDuration,
+                        total: maxDuration ?? const Duration(seconds: 0),
                         onSeek: (duration) {
                           Provider.of<MyCustomAudioPlayer>(context,
                                   listen: false)

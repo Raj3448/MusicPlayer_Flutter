@@ -24,41 +24,26 @@ class HorizontalCardView extends StatelessWidget {
       child: Consumer<SongInfo>(
         builder: (context, value, child) => GestureDetector(
           onTap: () {
-          SongInfo songInfo = Provider.of<SongInfo>(
-                                                    context,
-                                                    listen: false)
-                                                .getSongInfoInstance!;
-                                            songInfo.imageUrl =
-                                                singleSongInfo['imageUrl'];
-                                            songInfo.songUrl =
-                                                singleSongInfo['songUrl'];
-                                            songInfo.name = singleSongInfo['name'];
-                                            songInfo.singer =
-                                                singleSongInfo['singer'];
-                                            songInfo.id = singleSongInfo['id'];
-                                            print(songInfo);
-                                            Provider.of<MyCustomAudioPlayer>(
-                                                    context,
-                                                    listen: false)
-                                                .playSongByUrl(
-                                                    songUrl:
-                                                        singleSongInfo['songUrl'],
-                                                    songId: singleSongInfo['id']);
-            SongDetailsTemplate
-                songDetailsTemplate =
-                SongDetailsTemplate(
-                    id: singleSongInfo['id'],
-                    name: singleSongInfo['name'],
-                    imageUrl:
-                        singleSongInfo['imageUrl'],
-                    songUrl:
-                        singleSongInfo['songUrl'],
-                    singer:
-                        singleSongInfo['singer']);
-            Provider.of<RecentlyPlayedSongAdd>(
-                    context,listen: false)
-                .addSongIntoDB(
-                    songDetailsTemplate,context);
+            SongInfo songInfo = Provider.of<SongInfo>(context, listen: false)
+                .getSongInfoInstance!;
+            songInfo.imageUrl = singleSongInfo['imageUrl'];
+            songInfo.songUrl = singleSongInfo['songUrl'];
+            songInfo.name = singleSongInfo['name'];
+            songInfo.singer = singleSongInfo['singer'];
+            songInfo.id = singleSongInfo['id'];
+            print(songInfo);
+            Provider.of<MyCustomAudioPlayer>(context, listen: false)
+                .playSongByUrl(
+                    songUrl: singleSongInfo['songUrl'],
+                    songId: singleSongInfo['id']);
+            SongDetailsTemplate songDetailsTemplate = SongDetailsTemplate(
+                id: singleSongInfo['id'],
+                name: singleSongInfo['name'],
+                imageUrl: singleSongInfo['imageUrl'],
+                songUrl: singleSongInfo['songUrl'],
+                singer: singleSongInfo['singer']);
+            Provider.of<RecentlyPlayedSongAdd>(context, listen: false)
+                .addSongIntoDB(songDetailsTemplate, context);
           },
           child: Container(
             decoration: value.id == singleSongInfo['id']
@@ -76,7 +61,7 @@ class HorizontalCardView extends StatelessWidget {
                     clipBehavior: Clip.antiAlias,
                     decoration: const BoxDecoration(
                         color: Color.fromARGB(255, 1, 10, 24),
-                        borderRadius: BorderRadius.all(Radius.circular(30))),
+                        borderRadius: BorderRadius.all(Radius.circular(15))),
                     child: Image.network(
                       singleSongInfo['imageUrl'],
                       fit: BoxFit.cover,

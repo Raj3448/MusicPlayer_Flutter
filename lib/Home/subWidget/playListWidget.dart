@@ -1,5 +1,7 @@
 import 'package:beat_box/Provider/SongInfo.dart';
+import 'package:beat_box/models/songDetailsTemplate.dart';
 import 'package:beat_box/provider/audioPlayer.dart';
+import 'package:beat_box/provider/recentlyPlayed.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
@@ -59,6 +61,15 @@ class PlayListWidget extends StatelessWidget {
                 songInfo.singer = singer!;
                 songInfo.id = id!;
                 value.playSongByUrl(songUrl: songUrl!, songId: id!);
+
+                SongDetailsTemplate songDetailsTemplate = SongDetailsTemplate(
+                id: id!,
+                name: name!,
+                imageUrl: imageUrl!,
+                songUrl: songUrl!,
+                singer: singer!);
+            Provider.of<RecentlyPlayedSongAdd>(context, listen: false)
+                .addSongIntoDB(songDetailsTemplate, context);
               },
               child: ListTile(
                 leading: Container(

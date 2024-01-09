@@ -25,17 +25,18 @@ class HorizontalCardMedU extends StatelessWidget {
             child: InkWell(
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) =>
-                        PlayListScreen(playListInfo: singleSongInfo,documentId: singleSongInfo.id,)));
+                    builder: (context) => PlayListScreen(
+                          playListInfo: singleSongInfo,
+                          documentId: singleSongInfo.id,
+                        )));
               },
-              
               child: Container(
                 height: mediaQData.height * 0.17,
                 width: mediaQData.width * 0.4,
                 clipBehavior: Clip.antiAlias,
                 decoration: const BoxDecoration(
                     color: Color.fromARGB(255, 1, 10, 24),
-                    borderRadius: BorderRadius.all(Radius.circular(30))),
+                    borderRadius: BorderRadius.all(Radius.circular(15))),
                 child: Stack(
                   children: [
                     Image.network(
