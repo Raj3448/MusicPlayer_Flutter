@@ -12,8 +12,13 @@ class PlayListWidget extends StatelessWidget {
   String? songUrl;
   String? singer;
   String? id;
+  String? externalId;
+  String? internalId;
   PlayListWidget(
-      {required this.name,
+      {
+      required this.externalId,
+      required this.internalId,
+      required this.name,
       required this.imageUrl,
       required this.songUrl,
       required this.singer,
@@ -49,8 +54,6 @@ class PlayListWidget extends StatelessWidget {
           children: [
             InkWell(
               onTap: () {
-                //value.playSongByUrl(songUrl: songUrl!, songId: id!);
-                //songPlayerWidget(id!, name, imageUrl, songUrl, singer, context);
 
                 SongInfo songInfo =
                     Provider.of<SongInfo>(context, listen: false)
@@ -60,8 +63,8 @@ class PlayListWidget extends StatelessWidget {
                 songInfo.name = name!;
                 songInfo.singer = singer!;
                 songInfo.id = id!;
-                value.playSongByUrl(songUrl: songUrl!, songId: id!);
-
+                value.playSongByUrl(songUrl: songUrl!, songId: id!,);
+                
                 SongDetailsTemplate songDetailsTemplate = SongDetailsTemplate(
                 id: id!,
                 name: name!,

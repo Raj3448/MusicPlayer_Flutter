@@ -10,10 +10,12 @@ import 'package:provider/provider.dart';
 
 class HorizontalCardView extends StatelessWidget {
   Map<String, dynamic> singleSongInfo;
-  HorizontalCardView({
-    Key? key,
-    required this.singleSongInfo,
-  }) : super(key: key);
+ 
+  HorizontalCardView(
+      {Key? key,
+      required this.singleSongInfo,
+      })
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +37,8 @@ class HorizontalCardView extends StatelessWidget {
             Provider.of<MyCustomAudioPlayer>(context, listen: false)
                 .playSongByUrl(
                     songUrl: singleSongInfo['songUrl'],
-                    songId: singleSongInfo['id']);
+                    songId: singleSongInfo['id'],
+                    );
             SongDetailsTemplate songDetailsTemplate = SongDetailsTemplate(
                 id: singleSongInfo['id'],
                 name: singleSongInfo['name'],

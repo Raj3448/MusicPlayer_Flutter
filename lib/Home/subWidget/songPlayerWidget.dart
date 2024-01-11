@@ -40,7 +40,7 @@ Widget? songPlayerWidget(String id, String? name, String? imageUrl,
           builder: (context, value, child) => InkWell(
             onTap: () {
               if (!(value.isPlaying)) {
-                value.playSongByUrl(songUrl: songUrl!, songId: id);
+                value.playSongByUrl(songUrl: songUrl!, songId: id,);
               }
               value.pauseAndResumeSong();
             },

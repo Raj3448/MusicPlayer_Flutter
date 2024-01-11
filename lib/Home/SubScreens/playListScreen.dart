@@ -137,6 +137,8 @@ class PlayListScreen extends StatelessWidget {
                               songUrl: songContent[index].data()['songUrl'],
                               singer: songContent[index].data()['singer'],
                               id: songContent[index].data()['id'],
+                              externalId: documentId,
+                              internalId: songContent[index].id,
                             ));
                           });
                     }),

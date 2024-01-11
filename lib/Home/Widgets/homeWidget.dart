@@ -241,7 +241,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                           },
                                           child: HorizontalCardView(
                                               singleSongInfo:
-                                                  songsList[index].data()),
+                                                  songsList[index].data(),),
                                         );
                                       });
                                 }),
@@ -313,7 +313,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                             end: Alignment.centerRight),
                         borderRadius: BorderRadius.all(Radius.circular(20)),
                         color: Colors.black),
-                    child: songPlayerWidget(value.id!, value.name,
+                    child: songPlayerWidget(value.id, value.name,
                         value.imageUrl, value.songUrl, value.singer, context),
                   ),
                 ),

@@ -11,13 +11,7 @@ class RecentlyPlayedSongAdd with ChangeNotifier {
     try {
       if (uid == null) {
         uid = context.read<AuthBloc>().getUid;
-        BlocListener<AuthBloc, AuthState>(
-          listener: (BuildContext context, AuthState state) {
-            if (state is AuthSuccess) {
-              uid = state.UID;
-            }
-          },
-        );
+        
         print('Recently Played Song UiD: $uid');
       }
       if (uid != null) {

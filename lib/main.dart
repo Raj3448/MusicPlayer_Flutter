@@ -4,6 +4,7 @@ import 'package:beat_box/Blocs/Auth/AuthBloc/autth_bloc.dart';
 import 'package:beat_box/Provider/SongInfo.dart';
 import 'package:beat_box/Splash/splashScreen.dart';
 import 'package:beat_box/provider/audioPlayer.dart';
+import 'package:beat_box/provider/favoriteSongsProvider.dart';
 import 'package:beat_box/provider/recentlyPlayed.dart';
 import 'package:beat_box/provider/searchSong.dart';
 import 'package:firebase_app_check/firebase_app_check.dart';
@@ -37,7 +38,10 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<MyCustomAudioPlayer>(
             create: (context) => MyCustomAudioPlayer.private()),
         ChangeNotifierProvider<RecentlyPlayedSongAdd>(
-            create: (context) => RecentlyPlayedSongAdd())
+            create: (context) => RecentlyPlayedSongAdd()),
+        ChangeNotifierProvider<FavoriteSongs>(
+            create: (context) => FavoriteSongs()),
+            
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

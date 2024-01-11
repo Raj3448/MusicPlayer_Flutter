@@ -12,6 +12,7 @@ class MyCustomAudioPlayer extends ChangeNotifier {
 
   String? previousUrl;
   String id = " ";
+
   Duration? songDuration;
   Duration maxDuration = const Duration(minutes: 0);
   MyCustomAudioPlayer.private({Key? key});
@@ -21,7 +22,10 @@ class MyCustomAudioPlayer extends ChangeNotifier {
     return singleInstance!;
   }
 
-  void playSongByUrl({required String songUrl, required String songId}) async {
+  void playSongByUrl(
+      {required String songUrl,
+      required String songId,
+      }) async {
     if (isPlaying && previousUrl != songUrl) {
       audioPlayer.pause();
       isPlaying = false;
@@ -30,6 +34,7 @@ class MyCustomAudioPlayer extends ChangeNotifier {
       songDuration = await audioPlayer.getDuration();
       previousUrl = songUrl;
       id = songId;
+
       isPlaying = true;
       notifyListeners();
     } else if (!isPlaying) {
@@ -38,7 +43,7 @@ class MyCustomAudioPlayer extends ChangeNotifier {
       notifyListeners();
     } else if (!isPlaying || audioPlayer.state == PlayerState.completed) {
       // Play the song if it's not playing or has completed
-      await audioPlayer.play(UrlSource(songUrl!), mode: PlayerMode.mediaPlayer);
+      await audioPlayer.play(UrlSource(songUrl), mode: PlayerMode.mediaPlayer);
       isPlaying = true;
       notifyListeners();
     }
@@ -103,6 +108,7 @@ class MyCustomAudioPlayer extends ChangeNotifier {
   }
 
   get getSongId => id;
+
 
   void setDuration(Duration duration) {
     audioPlayer.seek(duration);

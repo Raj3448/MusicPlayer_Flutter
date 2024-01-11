@@ -76,7 +76,7 @@ class MusicLibraryWidget extends StatelessWidget {
                                   itemBuilder: (context, index) {
                                     return HorizontalCardView(
                                         singleSongInfo:
-                                            songContent[index].data());
+                                            songContent[index].data(),);
                                   });
                             }),
                       ),

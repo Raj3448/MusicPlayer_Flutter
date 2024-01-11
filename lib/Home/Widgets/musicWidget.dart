@@ -122,6 +122,15 @@ class MusicScreen extends StatelessWidget {
                       ),
                       color: Colors.white,
                     ),
+                    // IconButton(
+                    //     onPressed: () {
+                    //       // context
+                    //       //     .read<FavoriteSongs>()
+                    //       //     .songsAddAndRemoveAsFavorite(
+                    //       //         songId: audioPlayer.id,
+                    //       //         context: context,);
+                    //     },
+                    //     icon: const Icon(Icons.favorite_border))
                   ],
                 ),
               )
